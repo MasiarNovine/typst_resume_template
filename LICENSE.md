@@ -1,4 +1,4 @@
-# MIT LICENCE
+# MIT License
 
 Copyright (c) 2024 Masiar Novine
 
