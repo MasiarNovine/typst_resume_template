@@ -29,14 +29,18 @@
   columns(1, doc)
 }
 
+#let iconbox(field: none, icon: none, sep: none) = {
+  box(height: 10pt, image(icon), baseline: 20%) + " " + field + sep
+}
+
 #let headerblock(foto: none,
                  firstname: none,
                  lastname: none,
                  address: none,
-                 phone: none,
-                 email: none,
-                 github: none,
-                 orcid: none,
+                 phone: (field: none, icon: none),
+                 email: (field: none, icon: none),
+                 github: (field: none, icon: none),
+                 orcid: (field: none, icon: none),
                  linkedin: none
 ) = {
   v(-40pt)
@@ -45,20 +49,44 @@
     outset: (x: 100pt, y: 20pt),
     [
       #grid(
-        columns: (0.35fr, 1fr),
+        columns: (0.35fr, 1.2fr),
+        // First column
         align(left + top)[
           #box(image(foto, width: 100%), radius: 100%, clip: true)
         ],
+        // Second column
         [
           #align(right + horizon)[
             #text(size: 42pt, fill: white, weight: 300)[#firstname ]
             #text(size: 42pt, fill: white, weight: 400)[#lastname]\
             #v(6pt)
-            #text(size: 10pt, fill: white, weight: 400)[Luckeweg 43, 12279 Berlin]\
-            #text(size: 10pt, fill: white, weight: 400)[#link("+49 176 574 148 69")]
-            #text(size: 10pt, fill: white, weight: 400)[#link("masiar_novine@web.de")]\
-            #text(size: 10pt, fill: white, weight: 400)[#link("MasiarNovine")]
-            #text(size: 10pt, fill: white, weight: 400)[#link("0000-0001-9687-8675")]
+            #text(size: 10pt, fill: white, weight: 400)[#address]\
+            #text(size: 10pt, fill: white, weight: 400)[
+              #iconbox(
+                field: phone.field,
+                icon: phone.icon,
+                sep: " | "
+              )
+            ]
+            #text(size: 10pt, fill: white, weight: 400)[
+              #iconbox(
+                field: email.field,
+                icon: email.icon,
+              )
+            ]
+            #text(size: 10pt, fill: white, weight: 400)[
+              #iconbox(
+                field: github.field,
+                icon: github.icon,
+                sep: " | "
+              )
+            ]\
+            #text(size: 10pt, fill: white, weight: 400)[
+               #iconbox(
+                field: orcid.field,
+                icon: orcid.icon
+              )
+            ]
           ]
         ]
       )
