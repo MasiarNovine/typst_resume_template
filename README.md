@@ -1,6 +1,6 @@
 # A resume template in typst
 
-This is a template for a resume in typst, which can be simply
+This is a template for a resume in typst. It can be simply
 imported at the start of a typst file:
 
 ```rust
